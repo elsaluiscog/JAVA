@@ -82,31 +82,65 @@ public class AreaCalculator {
  *  TODO: Remove the violation so any Rectangle variable still works if
  *        bound to a Square.
  */
+
+public interface Resize {
+void setWidth(int w);
+void setHeight(int h);
+double area();
+
+}
 class Rectangle {
     protected int w,h;
-    void setWidth(int w)  { this.w = w; }
-    void setHeight(int h) { this.h = h; }
-    int  area()           { return w*h; }
+    public void setWidth(int w)  { this.w = w; }
+    public void setHeight(int h) { this.h = h; }
+    public int  area()           { return w*h; }
 }
+
+class Square {
+    protected int side;
+    public void setWidth(int w)  { this.w = w; }
+    public void setHeight(int h) { this.h = h; }
+    public int  area()           { return side  * side; }
+}
+
 class Square extends Rectangle {
     @Override void setWidth(int s)  { w = h = s; }
     @Override void setHeight(int s) { w = h = s; }
 }
 
+
+
+
 /*  Exercise-4  ▸  INTERFACE SEGREGATION  (ISP)
  *  Clients that only print are forced to depend on scan/fax.
  *  TODO: Break the bloated interface into smaller, role-specific ones.
  */
-interface MultiFunctionDevice {
-    void print(Document d);
-    void scan(Document d);
-    void fax (Document d);
+
+public interface Printer { void print(Document d); }
+public interface Scanner {void scan(Document d); }
+public interface Fax { void fax(Document d);}
+
+
+
+public class LaserPrinter implements Printer { void print(Document d)}
+public class LaserScanner implements Scanner { void print(Document d)}
+public class LaserFax implements Fax { void print(Document d)}
+
+
+
+
+public class MultiFunctionPrinter implements Printer, Scanner, Fax {
+    public void print(Document d) { /* ... */ }
+    public void scan(Document d)  { /* ... */ }
+    public void Fax(Document d)  { /* ... */ }
 }
-class LaserPrinter implements MultiFunctionDevice {
-    public void print(Document d){/*...*/}
-    public void scan (Document d){/* unused */}
-    public void fax  (Document d){/* unused */}
-}
+
+
+
+
+
+
+
 record Document(String name) {}
 
 /*  Exercise-5  ▸  DEPENDENCY-INVERSION  (DIP)
