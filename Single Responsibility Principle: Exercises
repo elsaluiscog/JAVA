@@ -18,20 +18,34 @@ public class Invoice {
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
+}
+
     // persistence + presentation mixed in!
-    public void save(Path path) throws IOException {
-        Files.writeString(path, toString());
-    }
-    public void print() {
-        System.out.println("--- Invoice ---");
-        items.forEach(System.out::println);
-        System.out.println("Total: " + total());
+    public class Saver {
+        public void save(Path path) throws IOException {
+            Files.writeString(path, toString());
     }
 }
 
-record LineItem(String name, int qty, BigDecimal price) {
-    BigDecimal subtotal() { return price.multiply(BigDecimal.valueOf(qty)); }
+
+    public class Printer{
+        public void print() {
+            System.out.println("--- Invoice ---");
+            invoice.getitems().forEach(System.out::println);
+            System.out.println("Total: " + total());
+    }
 }
+
+
+public record LineItem(String name, int qty, BigDecimal price) {
+    public BigDecimal subtotal() { return price.multiply(BigDecimal.valueOf(qty)); }
+}
+
+
+
+
+
+
 
 /*  Exercise-2  ▸  OPEN/CLOSED  (OCP)
  *  `AreaCalculator` must change every time a new shape appears.
@@ -50,6 +64,13 @@ public class AreaCalculator {
         };
     }
 }
+
+
+
+
+
+
+
 
 /*  Exercise-3  ▸  LISKOV SUBSTITUTION  (LSP)
  *  Square inherits setters that break the base‐class contract.
