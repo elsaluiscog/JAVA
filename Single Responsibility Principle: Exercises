@@ -44,25 +44,30 @@ public record LineItem(String name, int qty, BigDecimal price) {
 
 
 
-
-
-
 /*  Exercise-2  ▸  OPEN/CLOSED  (OCP)
  *  `AreaCalculator` must change every time a new shape appears.
  *  TODO: Refactor so you can add new shapes without modifying AreaCalculator.
  */
-interface Shape {}
-record Circle(double r) implements Shape {}
-record Rectangle(double w,double h) implements Shape {}
+public interface Shape {double area(); }
+
+public class Circle implements Shape {
+private final double r;
+public Circle(double r( {this.r -r;}
+public double area() { return Math.PI * r * r; }
+
+}
+
+
+Public class Rectangle implements Shape {
+private final double w,h;
+public Rectangle(double w, double h) {this.w = w, this.h = h;}
+public double area () {return w * h}
+}
 
 public class AreaCalculator {
-    public double area(Shape s) {
-        return switch (s) {
-            case Circle c    -> Math.PI * c.r() * c.r();
-            case Rectangle r -> r.w() * r.h();
-            /* every new shape forces another case ⤴ */
-        };
-    }
+    public double area(List<Shape> shapes) {
+        return shapes.stream().mapToDouble(Shape::area).sum();
+}
 }
 
 
