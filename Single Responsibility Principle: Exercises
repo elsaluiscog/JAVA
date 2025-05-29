@@ -47,6 +47,7 @@ public record LineItem(String name, int qty, BigDecimal price) {
 /*  Exercise-2  ▸  OPEN/CLOSED  (OCP)
  *  `AreaCalculator` must change every time a new shape appears.
  *  TODO: Refactor so you can add new shapes without modifying AreaCalculator.
+
  */
 public interface Shape {double area(); }
 
@@ -121,12 +122,9 @@ public interface Scanner {void scan(Document d); }
 public interface Fax { void fax(Document d);}
 
 
-
 public class LaserPrinter implements Printer { void print(Document d)}
 public class LaserScanner implements Scanner { void print(Document d)}
 public class LaserFax implements Fax { void print(Document d)}
-
-
 
 
 public class MultiFunctionPrinter implements Printer, Scanner, Fax {
@@ -135,26 +133,30 @@ public class MultiFunctionPrinter implements Printer, Scanner, Fax {
     public void Fax(Document d)  { /* ... */ }
 }
 
-
-
-
-
-
-
 record Document(String name) {}
+
+
+
 
 /*  Exercise-5  ▸  DEPENDENCY-INVERSION  (DIP)
  *  High-level `Switch` depends directly on the concrete `Lamp`.
  *  TODO: Introduce an abstraction so Switch can control any device.
  */
-class Lamp {
-    void turnOn()  { System.out.println("💡 on"); }
-    void turnOff() { System.out.println("💡 off"); }
-}
-class Switch {
+
+
+public interface Lamp {void turnON(): turnOFF();
+
+
+public class Switch {
     private final Lamp lamp;
     Switch(Lamp l){ this.lamp = l; }
     void toggle(boolean on){
         if(on) lamp.turnOn(); else lamp.turnOff();
     }
+}
+
+
+class Lamp {
+    void turnOn()  { System.out.println("💡 on"); }
+    void turnOff() { System.out.println("💡 off"); }
 }
