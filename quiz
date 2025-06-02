@@ -1,0 +1,46 @@
+📚 **1️⃣ Conceptual Understanding Quiz **
+Q1: What is the primary role of the JDK in Java development?
+
+A) To run Java bytecode B) To compile Java code and provide developer tools C) To package Java programs D) To manage Java dependencies
+
+Q2: Why does Java use bytecode instead of compiling directly to machine code?
+
+A) Bytecode makes programs faster B) Bytecode is easier to debug C) Bytecode allows programs to run on any system with a JVM D) Bytecode takes up less space on disk
+
+Q3: What is the purpose of the Java Virtual Machine (JVM)?
+
+A) It writes Java code for you B) It compiles Java source code into bytecode C) It runs Java bytecode on any supported platform D) It manages Java project dependencies
+
+🛠 2️⃣ Tools & Processes
+Q4: What command do you use to compile a .java file into a .class file?
+
+A) java B) jar C) javac D) jvmc
+
+Q5: What is the correct command to run a Java program packaged in a .jar file?
+
+A) javac MyApp.jar B) jar run MyApp.jar C) java -jar MyApp.jar D) run MyApp.jar
+
+Q6: What is typically included in a .jar file? (Select all that apply)
+
+A) Compiled .class files B) Java source code .java files C) Resources (images, configs) D) MANIFEST.MF file with metadata
+
+🌐 3️⃣ Architectural Philosophy
+Q7: Which of the following best describes Sun’s core philosophy when designing Java?
+
+A) Prioritize hardware-specific optimizations B) Build for isolated, standalone systems C) "Write once, run anywhere" — portability across platforms D) Minimize compatibility with existing C/C++ code
+
+Q8: How does the .jar format support Java’s philosophy of portability?
+
+A) It compresses Java source files B) It ensures the program is bundled with all needed bytecode and resources C) It encrypts the Java program for security D) It forces developers to use a single OS
+
+⚙️ 4️⃣ Advanced (System Thinking)
+Q9: If a program runs fine when compiled with javac but fails when run with java -jar, what is a likely cause?
+
+A) The .class files are corrupted B) The .jar file is missing the Main-Class entry in its MANIFEST C) The source code has syntax errors D) The JVM is out of date
+
+Q10: What is the relationship between javac and the JVM?
+
+A) They perform the same function B) javac runs Java programs directly C) javac creates bytecode, which the JVM then executes D) The JVM compiles Java source code into bytecode
+
+✅ Bonus Reflection Questions (to deepen learning):
+1️⃣ In your own words, why did Sun design Java to compile to bytecode instead of native machine code? 2️⃣ How does using .jar files simplify building larger Java systems or sharing code with others? 3️⃣ How does understanding the role of javac help you debug problems in your build process?
