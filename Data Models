@@ -1,0 +1,28 @@
+YouTube App Database
+User Stories:
+
+The Viewer
+Goal: Find and watch videos on the platform.
+  Steps:
+    User lands on the Home page with the desire to watch videos
+    User filters the page for the type of videos they want to watch.
+    User identifies a video they like.
+    User interacts with comments 
+    User goes to their profile
+
+The Creator
+Goal: Upload and manage videos on the platform.
+  Steps:
+  User goes into Home page and navigates to the Upload Page.
+  User uploads a video, adds title, description, tags, and selects privacy settings.
+  User publishes the video
+  User can manage their channel, view analytics
+
+Data Models:
+User: ID, First name, Last name, Email, Phone number, Date of birth, Profile picture URL, Subscription list.
+Video: ID, User ID (Creator), Title, Description, Tags, Upload DateTime, Privacy settings, View count, Like count, Dislike count, Comment count.
+Comment: ID, Video ID, User ID, Comment text, Timestamp.
+Subscription: ID, Subscriber User ID, Subscribed Channel User ID, Timestamp.
+Like/Dislike: ID, Video ID, User ID, Type (0-like, 1 no like) Timestamp.
+View History: ID, User ID, Video ID, Timestamp.
+
